@@ -1,0 +1,32 @@
+[core]
+	excludesfile = ~/.gitignore
+[gui]
+	fontui = -family terminus -size 11 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family terminus -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[user]
+	name = « github kullanıcı adınız »
+	email = « github email adresiniz »
+[alias]
+	br=branch
+	ci=commit
+	co=checkout
+	di=diff
+	loa=log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lo=log --graph --decorate --pretty=oneline --abbrev-commit
+	me=merge
+	pl=pull
+	pu=push
+	st=status
+	up=pull
+[color]
+	ui = auto
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+[github]
+	user = « github kullanıcı adınız »
+	token = « github token: https://github.com/account adresinde sağ alttaki API token »
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
