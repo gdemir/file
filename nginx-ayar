@@ -6,26 +6,20 @@ server {
 	access_log  /var/log/nginx/access.log;
 
 	index index.html index.htm index.php;
-	root   /var/www;
+	root /var/www/html;
 
 	location ~ \.php$ {
-		fastcgi_pass 127.0.0.1:9000;
+		# fastcgi_pass 127.0.0.1:9000;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_index index.php;
-		fastcgi_param SCRIPT_FILENAME $request_filename;
+		#fastcgi_param SCRIPT_FILENAME $request_filename;
+		fastcgi_param  SCRIPT_FILENAME  /srv/http$fastcgi_script_name;
 
 		include fastcgi_params;
 	}
 
-	set $service "";
-	if ($request_uri ~* ^(/[^/]+)/.*$) {
-		set $service $1;
-	}
-
 	location / {
-		if (!-f $document_root/$service/f3.php) {
-			break;
-		}
-		index f3.php index.php index.html index.htm;
-		try_files $uri $uri/ $service/f3.php;
+		index index.php index.html index.htm;
+		try_files $uri $uri/ /index.html;
 	}
 }
