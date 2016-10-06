@@ -1,16 +1,16 @@
 server {
 
-	listen   80;
-	server_name  localhost;
+	listen 80;
+	server_name localhost;
 
-	access_log  /var/log/nginx/access.log;
+	access_log /var/log/nginx/access.log;
 
 	index index.html index.htm index.php;
 	root /var/www/html;
 
 	location ~ \.php$ {
 		# fastcgi_pass 127.0.0.1:9000;
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
 		fastcgi_index index.php;
 		#fastcgi_param SCRIPT_FILENAME $request_filename;
 		fastcgi_param  SCRIPT_FILENAME  /srv/http$fastcgi_script_name;
